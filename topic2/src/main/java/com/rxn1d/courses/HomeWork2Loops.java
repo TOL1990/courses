@@ -15,8 +15,15 @@ public class HomeWork2Loops {
      * @param integers заданный массив типа int[]
      * @return минимальное число из массива
      */
-    public static int min(int[] integers) {
-        return 1;
+    public static int min(int[] integers)
+    {
+        int numb = integers[0];
+        for(int i = 0; i < integers.length; i++)
+        {
+            if(numb > integers[i])
+                numb = integers[i];
+        }
+        return numb;
     }
 
     /**
@@ -29,7 +36,14 @@ public class HomeWork2Loops {
      * @return максимальное число из массива
      */
     public static double max(double[] doubles) {
-        return 1;
+
+        double numb = doubles[0];
+        for(int i = 0; i < doubles.length; i++)
+        {
+            if(numb < doubles[i])
+                numb = doubles[i];
+        }
+        return numb;
     }
 
     /**
@@ -42,7 +56,12 @@ public class HomeWork2Loops {
      * @return среднее арифмитическое число из массива
      */
     public static short average(short[] shorts) {
-        return 1;
+        short numb = shorts[0];
+        for(int i = 1; i < shorts.length; i++)
+        {
+            numb += shorts[i];
+        }
+        return (short) (numb/shorts.length);
     }
 
     /**
@@ -54,6 +73,12 @@ public class HomeWork2Loops {
      * @return перевернутый массив
      */
     public static char[] reverse(char[] chars) {
-        return new char[1];
+        char [] big = new char[chars.length];
+
+        for(int i = 0; i<chars.length;i++)
+        {
+            big[chars.length - i - 1] = chars[i];
+        }
+        return big;
     }
 }

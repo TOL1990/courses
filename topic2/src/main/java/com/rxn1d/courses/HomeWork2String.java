@@ -29,6 +29,15 @@ public class HomeWork2String {
      * @return результирующая строка
      */
     public static String removeSymbolFromString(String symbol, String s) {
-        return "";
+        String sec = s;
+        String first = String.valueOf(s.charAt(0));
+        String last = String.valueOf(s.charAt(s.length()-1));
+        String midle = String.valueOf(s.charAt(s.length()/2));
+        for (int i =1; i < s.length(); i++)
+        {
+           // if(symbol == first)
+             //   sec.charAt(0) = s.charAt(0);
+        }
+        return sec;
     }
 }
