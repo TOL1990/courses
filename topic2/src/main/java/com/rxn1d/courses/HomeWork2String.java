@@ -1,12 +1,16 @@
 package com.rxn1d.courses;
 
+import sun.swing.BakedArrayList;
+
+import java.util.ArrayList;
+
 /**
  * Модифицируйте этот класс(файл)
  *
  * @author Ievgen Tararaka
  */
 public class HomeWork2String {
-    /**
+      /**
      * Метод должен вернуть количество четных чисел в строке.
      * <p>Например:
      * дана строка - 1_4_8_11_22, ответ - 3
@@ -15,7 +19,17 @@ public class HomeWork2String {
      * @return количество четных числе в строке
      */
     public static int countEvenInString(String s) {
-        return 1;
+        String[] pars = s.split("_");
+        int count = 0;
+        for(int i = 0; i <pars.length;i++)
+        {
+            if(Integer.parseInt(pars[i]) % 2 == 0)
+            {
+                count++;
+            }
+        }
+
+        return count;
     }
 
     /**
