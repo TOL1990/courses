@@ -1,5 +1,6 @@
 package com.rxn1d.courses.model;
 
+import java.io.Serializable;
 import java.util.Arrays;
 
 /**
@@ -7,7 +8,7 @@ import java.util.Arrays;
  *
  * @author Ievgen Tararaka
  */
-public class CarParking {
+public class CarParking implements Serializable {
     private String address;
     private String parkingName;
     private Car[] cars;

@@ -18,6 +18,8 @@ public class SerializationFactory {
      */
     public static CarParkingDeserializer getDeserializer(Format format) {
         // TODO - здесь будет ваша логика. Необходимо вернуть реализацию интерфейса
+
+
         return null;
     }
 

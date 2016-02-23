@@ -8,6 +8,6 @@ import com.rxn1d.courses.model.CarParking;
  *
  * @author Ievgen Tararaka
  */
-public interface CarParkingDeserializer {
+public interface CarParkingDeserializer  {
     CarParking deserialize(String serializedCarParking);
 }
