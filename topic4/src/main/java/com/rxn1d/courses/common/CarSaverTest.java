@@ -2,6 +2,8 @@ package com.rxn1d.courses.common;
 
 import com.rxn1d.courses.model.Car;
 import com.rxn1d.courses.model.CarParking;
+import com.rxn1d.courses.service.CarParkingDeserializer;
+import com.rxn1d.courses.service.SerializationFactory;
 
 import java.io.*;
 
@@ -9,6 +11,11 @@ import java.io.*;
  * Created by Леонид on 18.02.2016.
  */
 public class CarSaverTest {
+    private static final Format FORMAT = Format.JSON;
+
+    private static String firstJson;
+    private static String secondJson;
+
     public static void main(String[] args) {
         String jsonStr = "{\n" +
                 "  \"address\": \"Gagarina avenue 1\",\n" +
@@ -42,7 +49,36 @@ public class CarSaverTest {
        {
            cars[i] = getCarWithNumber(i,jsonStr);
        }
+
+
+
+
+
+    }
+    public void testFactory()
+    {
+        String jsonString = "";
+        try(FileReader reader = new FileReader("C:\\Programing\\Java\\SpalahSchool\\courses1\\topic4\\src\\test\\resorces\\deserialization\\json1.json"))
+        {
+            // читаем посимвольно
+            int c;
+            while((c=reader.read())!=-1){
+
+                // System.out.print((char)c);
+                firstJson += (char)c;
+            }
         }
+        catch(IOException ex){
+
+            System.out.println(ex.getMessage());
+        }
+
+        // System.out.println("Начинка первого json-чика" + firstJson);
+
+        CarParkingDeserializer deserializer = SerializationFactory.getDeserializer(FORMAT);
+        CarParking carParking = deserializer.deserialize(firstJson);
+
+    }
     public void myTetstSerializationAndDeserialization() {
         Car one = new Car("Ferarri", "458", "F458-111", 4800, 2800);
         Car two = new Car("Ваз", "2106", "АЕ149-16АА", 3700, 2500);
@@ -261,10 +297,10 @@ public class CarSaverTest {
         addresStr = removeChar(addresStr, '"');
         System.out.println("adr str =" + addresStr + "=");
 
-        int cd = Integer.parseInt(addresStr);
-       System.out.println("Integer = " + cd);
+//        int cd = Integer.parseInt(addresStr);
+//       System.out.println("Integer = " + cd);
 
-        return cd;
+        return 0;
 
     }
 
