@@ -1,7 +1,7 @@
 package com.rxn1d.courses.service;
 
-import com.rxn1d.courses.model.Car;
-import com.rxn1d.courses.model.CarParking;
+import com.rxn1d.courses.Car;
+import com.rxn1d.courses.CarParking;
 
 /**
  * Created by Леонид on 22.02.2016.

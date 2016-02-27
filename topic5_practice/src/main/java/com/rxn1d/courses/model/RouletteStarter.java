@@ -1,4 +1,4 @@
-package com.rxn1d.courses;
+package com.rxn1d.courses.model;
 
 /**
  * Входная точка в игру
@@ -13,5 +13,6 @@ public class RouletteStarter {
 
         Table table = new Table();
         table.run();
+
     }
 }

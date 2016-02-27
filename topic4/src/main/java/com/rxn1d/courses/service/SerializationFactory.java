@@ -1,12 +1,6 @@
 package com.rxn1d.courses.service;
 
 import com.rxn1d.courses.common.Format;
-import com.rxn1d.courses.model.Car;
-
-import java.io.FileInputStream;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.ObjectInputStream;
 
 /**
  * Фабрика для создания сериализатора и десериализатора для конкретного типа файла

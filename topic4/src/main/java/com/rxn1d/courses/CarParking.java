@@ -1,4 +1,4 @@
-package com.rxn1d.courses.model;
+package com.rxn1d.courses;
 
 import java.io.Serializable;
 import java.util.Arrays;

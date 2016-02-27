@@ -1,7 +1,7 @@
 package com.rxn1d.courses.common;
 
-import com.rxn1d.courses.model.Car;
-import com.rxn1d.courses.model.CarParking;
+import com.rxn1d.courses.Car;
+import com.rxn1d.courses.CarParking;
 import com.rxn1d.courses.service.CarParkingDeserializer;
 import com.rxn1d.courses.service.SerializationFactory;
 
