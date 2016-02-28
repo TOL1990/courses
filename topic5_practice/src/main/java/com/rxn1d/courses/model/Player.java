@@ -43,10 +43,21 @@ public class Player {
         this.bet = bet;
     }
     public void setBet(String bet,int moneybet) {
-        this.bet = bet;
-        this.betMoney = moneybet;
 
-        if(moneybet > money) System.out.println("Ты ставишь больше бабла чем у тебя есть");
+
+        if(moneybet > money)
+        {
+            System.out.println("BET NOTE ACCEPTED. Ты ставишь больше бабла чем у тебя есть");
+        }
+
+        else
+        {
+            System.out.println("BET ACCEPTED");
+            this.bet = bet;
+            this.betMoney = moneybet;
+        money -= moneybet;
+        }
+
     }
 
     public String getName() {
