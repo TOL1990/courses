@@ -43,13 +43,14 @@ public class Player {
         this.bet = bet;
     }
     public void setBet(String bet,int moneybet) {
-
+        System.out.println("Check bet");
 
         if(moneybet > money)
         {
             System.out.println("BET NOTE ACCEPTED. Ты ставишь больше бабла чем у тебя есть");
         }
-
+        else if (moneybet > 500 )System.out.println("BET NOTE ACCEPTED. Ставка больше 500$");
+        else if (moneybet < 1)System.out.println("BET NOTE ACCEPTED. Ставка меньше 1$");
         else
         {
             System.out.println("BET ACCEPTED");
@@ -75,4 +76,5 @@ public class Player {
     public void setMoney(int money) {
         this.money = money;
     }
+
 }
