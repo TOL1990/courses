@@ -2,7 +2,6 @@ package com.rxn1d.courses.model;
 
 /**
  * Created by Леонид on 27.02.2016.
- * some changes
  */
 public class Bet {
     boolean red_black;// false - blak

@@ -15,22 +15,26 @@ public class TextAnalyzer {
     private static int symbolCounts;
     private static int wordsCount;
     private static int sentencesCount;
-/// to git commit. only test
+    private static ArrayList<String> uniqWords;
 
     public static void main(String[] args) {
         String[] str = readFromFile();
 
         for (int i = 0; i < str.length; i++ )
           
-      //  System.out.println( str[i]);
+//        System.out.println( str[i]);
 
-        getSymbolCounts(str);
+       symbolCounts = SymbolCounter.getSymbolCounts(SymbolCounter.readFromFile());
         getWordsCount(str);
         getSentences(str);
+        uniqWords = getUniqueWords(str);
+        System.out.println("uniqWords: " + uniqWords);
+        System.out.println("uniqWordsCount =  " + uniqWords.size());
         printStatistic();
     }
 
     private static void getSentences(String[] sArr) {
+
         for(int i=0; i < sArr.length; i++)
         {
             char[] tempArrChar = sArr[i].toCharArray();
@@ -51,19 +55,25 @@ public class TextAnalyzer {
             BufferedReader bufferRead = new BufferedReader((new FileReader("topic8\\src\\main\\resources\\text_sample.txt")));
 
             String input = bufferRead.readLine();
-            return input.split("\\s");
+            return input.split("\\s*[,|.|!|?|-|:|;|\\s]+\\s*");
         } catch (IOException e) {
             return new String[]{""};
         }
     }
-    public static void getSymbolCounts(String[] sArr) {
 
-        for(int i=0; i < sArr.length; i++)
+    public static ArrayList<String> getUniqueWords (String[] sArr) {
+        ArrayList<String> uniqList = new ArrayList<>();
+
+        for (int i = 0; i < sArr.length; i++)
         {
-            char[] tempArrChar = sArr[i].toCharArray();
-           symbolCounts += tempArrChar.length;
+            if(!uniqList.contains(sArr[i])) uniqList.add(sArr[i]);
+            else
+            {
+//                System.out.println("Else getUniqueWords.");
+                uniqList.remove(sArr[i]);
+            }
         }
-
+       return uniqList;
     }
     public static void printStatistic()
     {
