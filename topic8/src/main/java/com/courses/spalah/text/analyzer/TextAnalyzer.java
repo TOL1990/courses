@@ -5,13 +5,14 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
  * @author Ievgen Tararaka
  *
  */
-public class TextAnalyzer {
+    public class TextAnalyzer {
     private static int symbolCounts;
     private static int wordsCount;
     private static int sentencesCount;
@@ -19,13 +20,13 @@ public class TextAnalyzer {
 
     public static void main(String[] args) {
         String[] str = readFromFile();
+        String[] strznak = readFromFileZnak();
 
-        for (int i = 0; i < str.length; i++ )
-          
-//        System.out.println( str[i]);
+//        for (int i = 0; i < str.length; i++ )     // для выводна на экран массива
+//       System.out.println( str[i]);
 
-       symbolCounts = SymbolCounter.getSymbolCounts(SymbolCounter.readFromFile());
-        getWordsCount(str);
+       symbolCounts = SymbolCounter.readFromFile().length();
+        getWordsCount(strznak);
         getSentences(str);
         uniqWords = getUniqueWords(str);
         System.out.println("uniqWords: " + uniqWords);
@@ -46,8 +47,7 @@ public class TextAnalyzer {
     }
 
     private static void getWordsCount(String[] str) {
-        for (int i = 0; i < str.length; i++ )
-            wordsCount++;
+            wordsCount = str.length;
     }
 
     public static String[] readFromFile() {
@@ -60,18 +60,37 @@ public class TextAnalyzer {
             return new String[]{""};
         }
     }
+    public static String[] readFromFileZnak() {
+        String input = "";
+        String resultStr = "";
+        try {
+            BufferedReader bufferRead = new BufferedReader((new FileReader("topic8\\src\\main\\resources\\text_sample.txt")));
+
+            while (input != null) {
+                resultStr += input;
+                input = bufferRead.readLine();
+            }
+            bufferRead.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return resultStr.split("\\s");
+    }
 
     public static ArrayList<String> getUniqueWords (String[] sArr) {
+        ArrayList<String> tempList = new ArrayList<>();
         ArrayList<String> uniqList = new ArrayList<>();
 
         for (int i = 0; i < sArr.length; i++)
         {
-            if(!uniqList.contains(sArr[i])) uniqList.add(sArr[i]);
-            else
-            {
-//                System.out.println("Else getUniqueWords.");
-                uniqList.remove(sArr[i]);
-            }
+            tempList.add(sArr[i]);
+        }
+        for(int i = 0; i < tempList.size(); i++)
+        {
+            int frequencyCount = Collections.frequency(tempList, tempList.get(i)); // получим результат 2
+            if(frequencyCount == 1)
+                uniqList.add(tempList.get(i));
         }
        return uniqList;
     }
