@@ -38,4 +38,9 @@ public class Noda <E>
     public void setNextObj(Noda<E> nextObj) {
         this.nextObj = nextObj;
     }
+
+    public void clear()
+    {
+        nextObj = null;
+    }
 }
