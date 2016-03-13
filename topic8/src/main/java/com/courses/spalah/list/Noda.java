@@ -8,19 +8,27 @@ public class Noda <E>
     private E obj;
     private Noda<E> nextObj;
 
+//Vers1
+//    public Noda(E e) {
+//        obj = e;
+//        nextObj = null;
+//    }
 
-    public Noda(E obj) {
-        this.obj = obj;
+
+//Verse1
+//    public Noda(E e, Noda<E> nextObjL) {
+//        obj = e;
+//        setNextObj(nextObjL);
+//    }
+
+    public Noda(Noda nextE) {
+        obj = null;
+        this.nextObj = nextE;
     }
 
-    @Override
-    public String toString() {
-        return obj.toString();
-    }
-
-    public Noda(E obj, Noda<E> nextObj) {
-        obj = obj;
-        this.nextObj = nextObj;
+        public Noda(E e, Noda<E> nextObjL) {
+        this.obj = e;
+        this.nextObj = nextObjL;
     }
 
     public E getObj() {
@@ -41,6 +49,11 @@ public class Noda <E>
 
     public void clear()
     {
+        obj = null;
         nextObj = null;
+    }
+    @Override
+    public String toString() {
+        return obj.toString();
     }
 }

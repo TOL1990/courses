@@ -7,11 +7,15 @@ import java.util.function.Consumer;
  * Created by Leonid on 11.03.2016.
  */
 public class SinglyLinkedList<E> implements MyList {
-    private Noda<E> prevObj; //firstObj
-    private Noda<E> nextObj;
-    private Noda<E> currentObj;
+    private Noda<E>  prevObj; //firstObj
+    private Noda<E>  nextObj;
+    private Noda<E>  currentObj;
     private int index;
     private int size;
+
+    public SinglyLinkedList() {
+       prevObj = new Noda(null);
+    }
 
 
     @Override
@@ -38,6 +42,18 @@ public class SinglyLinkedList<E> implements MyList {
         size++;
         return true;
     }
+    @Override
+    public void add(int index, Object element) {
+
+        Noda newNode = new Noda(element, null);
+        currentObj = getNodaWithIndex(index-1);
+        nextObj = currentObj.getNextObj();
+        currentObj.setNextObj(newNode);
+        newNode.setNextObj(nextObj);
+
+//        currentObj.getNextObj().setNextObj(nextObj);// many trable
+        size++;
+    }
 
     private Noda getNodaWithIndex(int index)
     {
@@ -47,43 +63,28 @@ public class SinglyLinkedList<E> implements MyList {
         }
         return nextObj;
     }
-//    private void makeLastAsNew(Noda newNoda) {  //превращает последний в арг. нод в последний
-//    Noda<E> lastObj = getLast();
-//    }
-
-//    private Noda<E> getLast() {
-//        if(size < 1) return null;
-//        if(size >= 1)
-//        {
-//            Noda<E> last = firstObj;
-//        }
-//        return
-//    }
-
-
-    @Override
-    public void add(int index, Object element) {
-//        Noda newNoda = new Noda(element, prevObj);
-        Noda newNode = new Noda(element, null);
-        currentObj = getNodaWithIndex(index-1);
-        nextObj = currentObj.getNextObj();
-        currentObj.setNextObj(newNode);
-        currentObj.getNextObj().setNextObj(nextObj);// many trable
-size++;
-    }
 
     @Override
     public void remove(int index) {
-
+    currentObj = getNodaWithIndex(index - 1);
+        nextObj = currentObj.getNextObj();
+        currentObj.setNextObj(nextObj);
+        size--;
     }
 
     @Override
-    public Object get(int index) {
-        return null;
+    public Object get(int index)
+    {
+        currentObj = getNodaWithIndex(index); 
+        return currentObj.getObj();
+
     }
 
     @Override
     public Object set(int index, Object element) {
+        currentObj = getNodaWithIndex(index);
+        //Fix and dell
+        currentObj.setObj((E) element);
         return null;
     }
 

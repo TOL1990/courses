@@ -12,14 +12,8 @@ public class Car {
 
     @Override ///Затестить, коли че передалать
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Car)) return false;
-
-        Car car = (Car) o;
-
-        if (priceInDollars != car.priceInDollars) return false;
-        return modelName != null ? modelName.equals(car.modelName) : car.modelName == null;
-
+       return this.priceInDollars == ((Car) o).priceInDollars &&
+               this.modelName == ((Car)o).modelName;
     }
 
     @Override
@@ -48,5 +42,12 @@ public class Car {
 
     public void setModelName(String modelName) {
         this.modelName = modelName;
+    }
+
+    @Override
+    public String toString() {
+        return "Car{" +"priceInDollars=" + priceInDollars +
+                ", modelName='" + modelName + '\'' +
+                '}';
     }
 }
