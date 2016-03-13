@@ -1,13 +1,14 @@
 package com.courses.spalah.list;
 
 import java.util.Iterator;
+import java.util.Spliterator;
 import java.util.function.Consumer;
 
 /**
  * Created by Leonid on 11.03.2016.
  */
 public class SinglyLinkedList<E> implements MyList {
-    private Noda<E>  prevObj; //firstObj
+    protected Noda<E>  prevObj;
     private Noda<E>  nextObj;
     private Noda<E>  currentObj;
     private int index;
@@ -25,14 +26,16 @@ public class SinglyLinkedList<E> implements MyList {
 
     @Override
     public boolean isEmpty() {
-        if(size == 0) return true;
+//        if(size == 0) return true;
+//        else return false;
 
-        else return false;
+        return prevObj.getNextObj() == null; // 0_0 хз почему
+
     }
 
     @Override
     public boolean add(Object element) {
-//        Noda newNoda = new Noda(element, prevObj);
+
         Noda newNode = new Noda(element, null);
         nextObj = prevObj;
         while (nextObj.getNextObj() != null) {
@@ -51,7 +54,6 @@ public class SinglyLinkedList<E> implements MyList {
         currentObj.setNextObj(newNode);
         newNode.setNextObj(nextObj);
 
-//        currentObj.getNextObj().setNextObj(nextObj);// many trable
         size++;
     }
 
@@ -68,40 +70,105 @@ public class SinglyLinkedList<E> implements MyList {
     public void remove(int index) {
     currentObj = getNodaWithIndex(index - 1);
         nextObj = currentObj.getNextObj();
-        currentObj.setNextObj(nextObj);
+        currentObj.setNextObj(nextObj.getNextObj());
         size--;
     }
 
     @Override
     public Object get(int index)
     {
-        currentObj = getNodaWithIndex(index); 
-        return currentObj.getObj();
+        nextObj = getNodaWithIndex(index);
+        return nextObj.getObj();
 
     }
 
     @Override
     public Object set(int index, Object element) {
-        currentObj = getNodaWithIndex(index);
+        nextObj = getNodaWithIndex(index);
         //Fix and dell
-        currentObj.setObj((E) element);
+        nextObj.setObj((E) element);
         return null;
     }
 
     @Override
     public boolean contains(Object element) {
+        nextObj = prevObj;
+        while(nextObj.getNextObj() != null)
+        {
+            nextObj = nextObj.getNextObj();
+            if(nextObj.getObj().equals(element)) return true;
+        }
         return false;
     }
 
     @Override
-    public Iterator iterator() {
+    public Spliterator spliterator() {
         return null;
     }
 
     @Override
-    public void forEach(Consumer action) {
+    public Iterator iterator() {
+//         return new MyIterator(); // Для внутреннего класа, кот не работает
+        index = 0;
+        nextObj = prevObj;
 
+        Iterator iterator = new Iterator() {
+            @Override
+            public boolean hasNext() {
+                if(nextObj.getNextObj() != null)
+                {
+                    nextObj = nextObj.getNextObj();
+                    index++;
+                    return true;
+                }
+                return false;
+            }
+
+            @Override
+            public Object next() {
+                return nextObj.getObj();
+            }
+
+            @Override
+            public void remove() {
+                index--;
+                SinglyLinkedList.this.remove(index);
+                size--;
+            }
+        };
+        return iterator;
     }
 
+
+
+    // Why dont work?
+//    @Override
+//    public void forEach(Consumer action) {
+//
+//    }
+    /*
+    class MyIterator //implements Iterator
+    {
+        SinglyLinkedList.this
+        prevObj
+        public MyIterator(Noda first, int index) {
+
+        }
+
+        @Override
+        public boolean hasNext() {
+            return false;
+        }
+
+        @Override
+        public Object next() {
+            return null;
+        }
+
+        @Override
+        public void remove() {
+
+        }
+    }*/
 
 }

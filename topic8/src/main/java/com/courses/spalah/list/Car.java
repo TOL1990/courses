@@ -10,17 +10,10 @@ public class Car {
     private int priceInDollars;
     private String modelName;
 
-    @Override ///Затестить, коли че передалать
+    @Override
     public boolean equals(Object o) {
        return this.priceInDollars == ((Car) o).priceInDollars &&
                this.modelName == ((Car)o).modelName;
-    }
-
-    @Override
-    public int hashCode() {// затестить, если тест пройдет выкинуть
-        int result = priceInDollars;
-        result = 31 * result + (modelName != null ? modelName.hashCode() : 0);
-        return result;
     }
 
     public Car(int priceInDollars, String modelName) {

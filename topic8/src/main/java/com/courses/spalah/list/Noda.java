@@ -8,18 +8,6 @@ public class Noda <E>
     private E obj;
     private Noda<E> nextObj;
 
-//Vers1
-//    public Noda(E e) {
-//        obj = e;
-//        nextObj = null;
-//    }
-
-
-//Verse1
-//    public Noda(E e, Noda<E> nextObjL) {
-//        obj = e;
-//        setNextObj(nextObjL);
-//    }
 
     public Noda(Noda nextE) {
         obj = null;
