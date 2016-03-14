@@ -11,7 +11,8 @@ public class TextAnalyzer2 {
 
     public TextAnalyzer2() {
         fileString = readFromFile("topic8\\src\\main\\resources\\text_sample.txt");
-        writeStatsToFile("topic8\\src\\main\\resources\\output.txt");
+        System.out.println(getAllStatistic());
+//        writeStatsToFile("topic8\\src\\main\\resources\\output.txt");
     }
 
     public TextAnalyzer2(String part) {
@@ -72,12 +73,28 @@ public class TextAnalyzer2 {
     {
 return null;
     }
+    private String toStrAll(String fileText)
+    {
+        return null;
+    }
+
     private String FileToStrWords(File file)
     {
         return null;
     }
+    private String toStrWords(String fileText)
+    {
+
+        return null;
+    }
+
     private String FileToStrNoSpaces(File file)
     {
+        return null;
+    }
+    private String toStrNoSpaces(String fileText)
+    {
+
         return null;
     }
 
@@ -88,18 +105,47 @@ return null;
         //Вызов методов по получению статы
 
         statistic = (
-        "Общее количество символов: " +                           getOverSymbolsCount() +
-        "Количество слов: " +                                     getOverWordsCount()+
-        "Количество предложений: "     +                          getSentencesCount()+
-        "Количество уникальных слов: "  +                         getUniqueWordsCount() +
-        "Самое часто встречающееся слово: " +                     getMostPopularWord()+
-        "Длинa самого короткого слова: " +                        getLengthOfShortestWord() +
-        "Длинa самого длинного слова: " +                         getLengthOfLongestWord() +
-        "Сколько раз каждое слово было встреченно в тексте: " +   getCountForEachWordMeetInText() +
-        "Сколько раз каждая буква была встреченна в в тексте: " + getCountForEachSymbolMeetInText() );
+        "Общее количество символов: " +                           getOverSymbolsCount(fileString) +
+   "\n"+ "Количество слов: " +                                     getOverWordsCount(fileString) +
+   "\n"+ "Количество предложений: "     +                          getSentencesCount(fileString)
+//        "\n"+ "Количество уникальных слов: "  +                         getUniqueWordsCount(fileString) +
+//       "\n"+ "Самое часто встречающееся слово: " +                     getMostPopularWord(fileString)+
+//        "\n"+ "Длинa самого короткого слова: " +                        getLengthOfShortestWord(fileString) +
+//        "\n"+ "Длинa самого длинного слова: " +                         getLengthOfLongestWord(fileString) +
+//        "\n"+ "Сколько раз каждое слово было встреченно в тексте: " +   getCountForEachWordMeetInText(fileString) +
+//        "\n"+ "Сколько раз каждая буква была встреченна в в тексте: " + getCountForEachSymbolMeetInText(fileString)
+                     );
 
 
         return statistic;
     }
 
+    private int getSentencesCount(String text) {
+       int sentencesCount = 0;
+        char[] charArr = text.toCharArray();
+
+        for( int i = 0; i < charArr.length; i++)
+        {
+            if(charArr[i] == '.')sentencesCount++;
+        }
+
+        return sentencesCount;
+    }
+
+    private int getOverWordsCount(String text) {
+//        int wordsCount = 0;
+        String [] textArr = text.split("\\s*[,|.|!|?|-|:|;|\\s]+\\s*");
+        return textArr.length;
+    }
+
+    public int getOverSymbolsCount(String text) {
+        int symbolsCount = 0;
+        text = text.replaceAll("\\s","");
+        char[] charArr = text.toCharArray();
+        for( int i = 0; i < charArr.length; i++)
+        {
+             symbolsCount++;
+        }
+        return symbolsCount ;
+    }
 }
