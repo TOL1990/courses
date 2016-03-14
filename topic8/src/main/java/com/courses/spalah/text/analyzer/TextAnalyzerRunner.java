@@ -5,7 +5,7 @@ package com.courses.spalah.text.analyzer;
  */
 public class TextAnalyzerRunner {
     public static void main(String[] args) {
-        TextAnalyzer2 textAnalyzer2 = new TextAnalyzer2();
+        TextAnalyzer textAnalyzer = new TextAnalyzer();
 
     }
 }
