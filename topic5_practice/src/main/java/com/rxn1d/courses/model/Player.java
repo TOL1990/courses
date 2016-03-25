@@ -77,4 +77,20 @@ public class Player {
         this.money = money;
     }
 
+    /**
+     * Добавляет в статистику ставки. Присваивает выиграш
+     * или проиграш в зависимости от результата игры
+     * @param WinOrLose true if win
+     * @param winCoeficient на сколько умножить выиграш
+     */
+    public void setWinBet(boolean WinOrLose, int winCoeficient) {
+        if(WinOrLose) {
+            System.out.println("Player " + this.getName() + " +" + this.getBetMoney());
+            this.setMoney(this.getMoney() + this.getBetMoney() * winCoeficient);
+        }else
+        {
+            System.out.println("Player " + this.getName() + " -" + this.getBetMoney());
+        }
+
+    }
 }

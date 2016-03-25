@@ -23,18 +23,17 @@ public class ConsoleReader {
     public static String[] readLineFromFile() {
         try {
 
-        BufferedReader reader = new BufferedReader(new FileReader("C:\\Programing\\Java\\SpalahSchool\\courses1\\topic5_practice\\src\\main\\java\\com\\rxn1d\\courses\\sources\\comand.txt"));
+        BufferedReader reader = new BufferedReader(new FileReader("topic5_practice\\src\\main\\resources\\comand.txt"));
 
             String line;
         List<String> lines = new ArrayList<String>();
         while ((line = reader.readLine()) != null) {
             lines.add(line);
         }
-        //если нужен массив то список можно запросто преобрпзовать
         String[] linesAsArray = lines.toArray(new String[lines.size()]);
             return linesAsArray;
         } catch (IOException e) {
-            e.getMessage();
+            e.printStackTrace();
             System.out.println("CAN NOT READ FILE:");
             return new String[]{""};
         }
