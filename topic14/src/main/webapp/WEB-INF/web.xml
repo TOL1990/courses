@@ -9,15 +9,28 @@
         <param-value>value</param-value>
     </context-param>
 
+
     <servlet>
-        <servlet-name>test</servlet-name>
-        <servlet-class>com.courses.spalah.TestGenericServlet</servlet-class>
+        <servlet-name>myServlet</servlet-name>
+        <servlet-class>com.courses.spalah.CarMarketServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>test</servlet-name>
+        <servlet-name>myServlet</servlet-name>
         <url-pattern>/*</url-pattern>
     </servlet-mapping>
+
+    <!--<servlet>-->
+        <!--<servlet-name>test</servlet-name>-->
+        <!--<servlet-class>com.courses.spalah.TestGenericServlet</servlet-class>-->
+        <!--<load-on-startup>2</load-on-startup>-->
+    <!--</servlet>-->
+
+    <!--<servlet-mapping>-->
+        <!--<servlet-name>test</servlet-name>-->
+        <!--<url-pattern>/*</url-pattern>-->
+    <!--</servlet-mapping>-->
+
 
 </web-app>
