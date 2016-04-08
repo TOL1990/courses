@@ -18,7 +18,11 @@ public class SerializationFactory {
      */
     public static CarParkingDeserializer getDeserializer(Format format) {
         // TODO - здесь будет ваша логика. Необходимо вернуть реализацию интерфейса
-        return null;
+CarParkingDeserializerImpl cp = new CarParkingDeserializerImpl();
+      //  cp.deserialize(jsonString);
+        //cp.toString();
+
+            return cp;
     }
 
     /**

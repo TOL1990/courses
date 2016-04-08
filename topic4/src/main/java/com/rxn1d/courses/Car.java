@@ -1,11 +1,13 @@
-package com.rxn1d.courses.model;
+package com.rxn1d.courses;
+
+import java.io.Serializable;
 
 /**
  * Данный класс представляет собой сущность автомобиля
  *
  * @author Ievgen Tararaka
  */
-public class Car {
+public class Car  implements Serializable {
     private String manufacturer;
     private String modelName;
     private String vin;

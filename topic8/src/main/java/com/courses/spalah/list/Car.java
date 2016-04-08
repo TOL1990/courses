@@ -10,6 +10,12 @@ public class Car {
     private int priceInDollars;
     private String modelName;
 
+    @Override
+    public boolean equals(Object o) {
+       return this.priceInDollars == ((Car) o).priceInDollars &&
+               this.modelName == ((Car)o).modelName;
+    }
+
     public Car(int priceInDollars, String modelName) {
         this.priceInDollars = priceInDollars;
         this.modelName = modelName;
@@ -29,5 +35,12 @@ public class Car {
 
     public void setModelName(String modelName) {
         this.modelName = modelName;
+    }
+
+    @Override
+    public String toString() {
+        return "Car{" +"priceInDollars=" + priceInDollars +
+                ", modelName='" + modelName + '\'' +
+                '}';
     }
 }

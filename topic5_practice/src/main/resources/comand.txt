@@ -1,0 +1,9 @@
+NEW_USER Jason 1001
+    NEW_USER Kate 530
+
+    BET Jason 1000 RED
+    BET Kate 3 BIG
+
+    PLAY_GAME
+
+    STATS
