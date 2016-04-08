@@ -14,18 +14,37 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by Leonid on 06.04.2016.
  */
 public class CarMarketServlet extends HttpServlet {
+    public static void main(String[] args) throws SQLException {
+
+        DaoServices cm = new DaoServices();
+        ArrayList arrayList = (ArrayList) cm.getAllCars();
+//        System.out.println(arrayList);
+        Car car = (Car) arrayList.get(1);
+        System.out.println(car);
+
+    }
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html;charset=utf-8");
 
         PrintWriter pw = resp.getWriter();
         pw.println("<B>Список групп</B>");
+        try {
+            DaoServices cm = new DaoServices();
+            ArrayList arrayList = (ArrayList) cm.getAllCars();
+            Car car = (Car) arrayList.get(1);
+            pw.println("<B>" + car +"</B>");
+
+        }catch (Exception e)
+        {}
 
         pw.println("<table border=1>");
 

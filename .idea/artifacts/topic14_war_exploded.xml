@@ -8,6 +8,10 @@
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: javax.servlet:servlet-api:2.3" />
+          <element id="archive" name="topic12-1.0-SNAPSHOT.jar">
+            <element id="module-output" name="topic12" />
+          </element>
+          <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.36" />
         </element>
       </element>
       <element id="directory" name="META-INF">
