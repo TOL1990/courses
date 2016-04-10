@@ -1,8 +1,9 @@
 package com.courses.spalah;
 
-import Core.Car;
-import Dao.CarDao;
-import Service.DaoServices;
+
+
+import home12.Core.Car;
+import home12.Service.DaoServices;
 
 import javax.servlet.GenericServlet;
 import javax.servlet.ServletException;
@@ -17,17 +18,16 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Leonid on 06.04.2016.
- */
+
 public class CarMarketServlet extends HttpServlet {
+
     public static void main(String[] args) throws SQLException {
 
-        DaoServices cm = new DaoServices();
-        ArrayList arrayList = (ArrayList) cm.getAllCars();
-//        System.out.println(arrayList);
+    DaoServices cm = new DaoServices();
+    ArrayList arrayList = (ArrayList) cm.getAllCars();
+        System.out.println(arrayList);
         Car car = (Car) arrayList.get(1);
-        System.out.println(car);
+        System.out.println(car.getDeveloper());
 
     }
 
@@ -37,14 +37,6 @@ public class CarMarketServlet extends HttpServlet {
 
         PrintWriter pw = resp.getWriter();
         pw.println("<B>Список групп</B>");
-        try {
-            DaoServices cm = new DaoServices();
-            ArrayList arrayList = (ArrayList) cm.getAllCars();
-            Car car = (Car) arrayList.get(1);
-            pw.println("<B>" + car +"</B>");
-
-        }catch (Exception e)
-        {}
 
         pw.println("<table border=1>");
 

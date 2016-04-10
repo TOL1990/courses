@@ -1,13 +1,9 @@
-package Service;
+package home12.Service;
 
-import Core.Car;
-import Dao.CarDao;
-import Dao.DAOUtils;
-import Dao.DBProcessor;
-import Dao.OwnerDao;
+import home12.Core.Car;
+import home12.Dao.CarDao;
+import home12.Dao.OwnerDao;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -42,7 +38,7 @@ public class DaoServices {
     }
     public List<Car> getAllCars()  {
         CarDao carDao = new CarDao();
-        ArrayList carList = null;
+        List carList = null;
         try {
             carList = carDao.getAllCar();
         } catch (SQLException e) {
