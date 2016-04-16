@@ -1,7 +1,10 @@
 package home12.Service;
 
 import home12.Core.Car;
+import home12.Core.Lot;
+import home12.Core.Owner;
 import home12.Dao.CarDao;
+import home12.Dao.LotDao;
 import home12.Dao.OwnerDao;
 
 import java.sql.SQLException;
@@ -36,6 +39,16 @@ public class DaoServices {
 
 
     }
+    public List<Owner> getAllOwners()  {
+        OwnerDao ownerDao = new OwnerDao();
+        List ownerList = null;
+        try {
+            ownerList = ownerDao.getAllOwners();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return ownerList;
+    }
     public List<Car> getAllCars()  {
         CarDao carDao = new CarDao();
         List carList = null;
@@ -45,5 +58,15 @@ public class DaoServices {
             e.printStackTrace();
         }
         return carList;
+    }
+    public List<Lot> getAllLots()  {
+        LotDao lotDao = new LotDao();
+        List lotList = null;
+        try {
+            lotList = lotDao.getAllLots();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return lotList;
     }
 }

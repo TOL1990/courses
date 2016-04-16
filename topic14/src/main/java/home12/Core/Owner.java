@@ -1,5 +1,7 @@
 package home12.Core;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by Leonid on 31.03.2016.
  */
@@ -7,6 +9,7 @@ public class Owner {
     private int owner_id;
     private String firstName;
     private String lastName;
+    @SerializedName("contact_phone")
     private String tel;
 
     public Owner(){}

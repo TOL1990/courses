@@ -1,5 +1,7 @@
 package home12.Core;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by Leonid on 31.03.2016.
  */
@@ -8,7 +10,10 @@ public class Car {
     private String developer;
     private String model;
     private String vin;
+
+    @SerializedName("describe")
     private String describe_more;
+    @SerializedName("year")
     private int created;
     private int owner_id;
 
