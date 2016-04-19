@@ -1,6 +1,7 @@
 package view;
 
 import model.Ball;
+import model.Frame;
 
 import javax.swing.*;
 
@@ -9,16 +10,8 @@ import javax.swing.*;
  */
 public class MainView {
     public static void main(String[] args) {
-        JFrame frame = new JFrame("Crazzy balls");
+        Frame frame = new Frame();
+        frame.init();
 
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setLocationRelativeTo(null);
-        frame.setSize(600,400);
-        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        Ball ball = new Ball();
-        JPanel panel = new JPanel();
-        frame.add();
-
-        frame.setVisible(true);
     }
 }
