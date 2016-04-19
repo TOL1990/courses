@@ -7,6 +7,7 @@ import com.google.gson.GsonBuilder;
 import home12.Core.Car;
 import home12.Core.Owner;
 import home12.Service.DaoServices;
+import org.json.simple.parser.JSONParser;
 
 
 import javax.servlet.ServletException;
@@ -84,13 +85,13 @@ public class CarMarketServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-//        JSONParser parser = new JSONParser();
-//        Object obj = null;
-//        try {
-//            obj = parser.parse(jsonToString(req));
-//        } catch (ParseException e) {
-//            e.printStackTrace();
-//        }
+        JSONParser parser = new JSONParser();
+        Object obj = null;
+        try {
+            obj = parser.parse(jsonToString(req));
+        } catch (org.json.simple.parser.ParseException e) {
+            e.printStackTrace();
+        }
 
         resp.setContentType("text/html;charset=utf-8");
 
