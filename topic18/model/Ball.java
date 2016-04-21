@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 
-public class Ball {
+public class Ball implements Movable {
     private Color color;
     private int x; // начальное состояние
     private int y;
@@ -20,38 +20,47 @@ public class Ball {
         this.x = xCreate;
         this.y = yCreate;
         color = getColor();
+        speed = new Random().nextInt(BallConstants.MAX_SPEED) + BallConstants.MIN_SPEED;
+
+        xDirection = new Random().nextInt(BallConstants.MAX_DIRECTION_SPEED_X) + BallConstants.MIN_DIRECTION_SPEED_X;
+        yDirection = new Random().nextInt(BallConstants.MAX_DIRECTION_SPEED_Y) + BallConstants.MIN_DIRECTION_SPEED_Y;
+
         size = initSize();
-        move();
+
     }
 
-    protected void paintComponent(Graphics g)
-    {
-//        g.clearRect(0, 0, getWidth(), getHeight()); // x , y , координаты появления фигуры
-        g.setColor(getColor());
-//        g.drawOval(0, 0, getWidth(), getHeight());
-        g.drawOval(200, 110, 60, 60);
-    }
 
     /**
      * @return рандомный цвет из листа ColorsArr
      * в стоковом состоянии возвр Green
      */
     public Color getColor() {
-//        ColorsArr colorsArr = new ColorsArr();
-//        Color color = Color.GREEN;
-        // Реализовать смену цвета
-//        Min + (int)(Math.random() * ((Max - Min) + 1))
-        return Color.GREEN;
+        ColorsArr colorsArr = new ColorsArr();
+        int randomColor =  (int)(Math.random() * ((colorsArr.getColorList().size()) + 1));
+        System.out.println(randomColor);
+        return colorsArr.getColorList().get(randomColor);
+//        return Color.BLUE;
     }
 
-    /**
-     * реализовыввает перемещение
-     */
-    public void move() {
-        speed = 2; //тестовая версия, пишу руками
-        x = x + speed;
-        y = y + speed;
+    @Override
+    public void move(int width, int height) {
+        //далее перемещение с исспользованием вектора направления х и у и скорости в одном параметре
+
+        x += xDirection;
+        y += yDirection;
+    if(x >= width - size || x <=0)
+    {
+        xDirection = xDirection * (-1); //инвертировать движение по х
     }
+        if(y >= height - size || y <=0)
+        {
+            yDirection = yDirection * (-1); //инвертировать движение по х
+        }
+
+        //  далее версия перемещения шара по направлению где скорость отдельный параметр
+        //...
+    }
+
 
     /**
      * @return размер мячика

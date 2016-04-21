@@ -10,6 +10,7 @@ public class ColorsArr {
     private  ArrayList<Color> COLOR_LIST ;
 
     public  ColorsArr() {
+        COLOR_LIST = new ArrayList<>();
         COLOR_LIST.add(Color.BLACK);
         COLOR_LIST.add(Color.BLUE);
         COLOR_LIST.add(Color.CYAN);

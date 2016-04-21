@@ -31,13 +31,10 @@ public class Panel extends JPanel{
         super.paint(g);
         for(Ball b : ballsList) {
 
-            g.setColor(g.getColor());
+            g.setColor(b.getColor());
             g.fillOval(b.getX(), b.getY(), b.getSize(), b.getSize());
+              b.move(getWidth(),getHeight());
 
-            for(Ball ball : ballsList)
-            {
-                ball.move();
-            }
         }
     }
 

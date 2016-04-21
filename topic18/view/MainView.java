@@ -4,6 +4,8 @@ import model.Ball;
 import model.Frame;
 
 import javax.swing.*;
+import java.awt.*;
+
 
 /**
  * Created by Leonid on 17.04.2016.

@@ -1,6 +1,7 @@
 package model;
 
 import javax.swing.*;
+import java.awt.*;
 
 /**
  * Created by Leonid on 18.04.2016.
@@ -12,7 +13,6 @@ public class Frame extends JFrame{
     }
     public void init() {
         Panel panel= new Panel();
-
         try {
             panel.moveBalls();
         } catch (InterruptedException e) {
