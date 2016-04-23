@@ -23,14 +23,6 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
-        <module name="topic10" />
-        <module name="topic12" />
-        <module name="topic14" />
-        <module name="topic16" />
-        <module name="topic2" />
-        <module name="topic4" />
-        <module name="topic8" />
-        <module name="topic9" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="1.8">
