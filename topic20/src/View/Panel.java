@@ -14,45 +14,55 @@ public class Panel extends JPanel{
     private JTextField bubleField;
     private JTextField quickField;
     private JButton btnGenArr ;
-    private JButton start ;
-    private JButton pause ;
-    private JButton stop ;
+    private JButton btnStart ;
+    private JButton btnPause ;
+    private JButton btnStop ;
     private Controller controller;
 
 Panel()
 {
-    this.setLayout(new FlowLayout());
+//    this.setLayout(new FlowLayout());
+    this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
     init();
 }
 
     private void init() {
         controller = new Controller();
 
+        bubleField = new JTextField();
+        bubleField.setColumns(120);
+        this.add(bubleField);
+
+        quickField = new JTextField();
+        quickField.setColumns(120);
+        this.add(quickField);
+
         btnGenArr = new JButton("Сгенерить массив");
         btnGenArr.setActionCommand("btnGenArr was pressed");
+        btnGenArr.setAlignmentX(Component.CENTER_ALIGNMENT);
         this.add(btnGenArr);
 
-//        btnGenArr = new JButton("Сгенерить массив");
-//        btnGenArr.setActionCommand("btnGenArr was pressed");
-//        this.add(start);
-//
-//        btnGenArr = new JButton("Сгенерить массив");
-//        btnGenArr.setActionCommand("btnGenArr was pressed");
-//        this.add(pause);
-//
-//        btnGenArr = new JButton("Сгенерить массив");
-//        btnGenArr.setActionCommand("btnGenArr was pressed");
-//        this.add(stop);
+        btnStart = new JButton("Старт");
+        btnStart.setActionCommand("btnGenArr was pressed");
+        this.add(btnStart);
 
-        bubleField = new JTextField();
-        bubleField.setColumns(23);
-        this.add(bubleField);
+        btnPause = new JButton("Пауза");
+        btnPause.setActionCommand("btnGenArr was pressed");
+        this.add(btnPause);
+
+        btnStop = new JButton("Стоп");
+        btnStop.setActionCommand("btnGenArr was pressed");
+        this.add(btnStop);
+
+
+
 
         btnGenArr.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 controller.generateArr();
                 bubleField.setText(controller.getBubleArrStr());
+                quickField.setText(controller.getQuickArrStr());
             }
         });
 

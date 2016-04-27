@@ -13,6 +13,7 @@ public class MainFrame extends JFrame {
         init();
     }
     public void init() {
+        //Лучше заиметь 2 панели одну под вывод другую под кнопки
         Panel panel = new Panel();
 
         this.setContentPane(panel);

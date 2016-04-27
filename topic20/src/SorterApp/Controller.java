@@ -30,6 +30,7 @@ public class Controller {
     public void generateArr() {
         unsortedArr = CreateAndMix();
         bubleSort = new BubleSort(unsortedArr);
+        quickSort = new QuickSort(unsortedArr);
     }
 
     public void start() {
