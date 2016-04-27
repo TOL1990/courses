@@ -5,7 +5,7 @@ package com.courses.spalah;
  */
 public class ThreadCommunication {
     public static void main(String[] args) throws InterruptedException {
-        waitNotify();
+        missedSignal();
     }
 
     public static void waitNotify() throws InterruptedException {
@@ -18,6 +18,41 @@ public class ThreadCommunication {
 
         synchronized (obj) {
             obj.notify();
+            Thread.sleep(2000);
+            System.out.println("SLEEP AFTER NOTIFY 2 SEC");
+        }
+    }
+
+    public static void missedSignal() throws InterruptedException {
+        Object obj = new Object();
+        Thread thread = new Thread(new MissWaitingWorker(obj), "miss waiting worker#1");
+        thread.start();
+
+        Thread.sleep(2000);
+        System.out.println("MAIN THREAD SLEEP FOR 2 SEC");
+
+        synchronized (obj) {
+            obj.notify();
+            Thread.sleep(2000);
+            System.out.println("SLEEP AFTER NOTIFY 2 SEC");
+        }
+    }
+
+    public static void waitNotifyAll() throws InterruptedException {
+        Object obj = new Object();
+
+        Thread thread1 = new Thread(new WaitingWorker(obj), "worker#1");
+        thread1.start();
+        Thread thread2 = new Thread(new WaitingWorker(obj), "worker#2");
+        thread2.start();
+        Thread thread3 = new Thread(new WaitingWorker(obj), "worker#3");
+        thread3.start();
+
+        Thread.sleep(1000);
+        System.out.println("MAIN THREAD SLEEP FOR 1 SEC");
+
+        synchronized (obj) {
+            obj.notifyAll();
             Thread.sleep(2000);
             System.out.println("SLEEP AFTER NOTIFY 2 SEC");
         }
@@ -47,8 +82,32 @@ class SignalWorker implements Runnable {
     }
 }
 
+class MissWaitingWorker extends WaitingWorker {
+    public MissWaitingWorker(Object object) {
+        super(object);
+    }
+
+    @Override
+    public void run() {
+        System.out.println(Thread.currentThread().getName() + " WAITING IN NOT SYNCHRONIZED BLOCK");
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        synchronized (object) {
+            try {
+                object.wait();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            System.out.println(System.currentTimeMillis() + " " + Thread.currentThread().getName() + " DO MY WORK");
+        }
+    }
+}
+
 class WaitingWorker implements Runnable {
-    private Object object;
+    public Object object;
 
     public WaitingWorker(Object object) {
         this.object = object;
@@ -59,12 +118,12 @@ class WaitingWorker implements Runnable {
         synchronized (object) {
             System.out.println(Thread.currentThread().getName() + " WAITING");
             try {
-                Thread.sleep(10000);
                 object.wait();
+                Thread.sleep(100);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            System.out.println("DO MY WORK");
+            System.out.println(System.currentTimeMillis() + " " + Thread.currentThread().getName() + " DO MY WORK");
         }
     }
 }
