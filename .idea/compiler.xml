@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
+    <option name="DEFAULT_COMPILER" value="Javac" />
     <resourceExtensions />
     <wildcardResourcePatterns>
       <entry name="!?*.java" />
@@ -27,6 +28,7 @@
         <module name="topic14" />
         <module name="topic16" />
         <module name="topic2" />
+        <module name="topic21" />
         <module name="topic4" />
         <module name="topic8" />
         <module name="topic9" />
@@ -38,6 +40,7 @@
       <module name="topic14" target="1.8" />
       <module name="topic16" target="1.8" />
       <module name="topic2" target="1.8" />
+      <module name="topic21" target="1.8" />
       <module name="topic4" target="1.8" />
       <module name="topic8" target="1.8" />
       <module name="topic9" target="1.8" />

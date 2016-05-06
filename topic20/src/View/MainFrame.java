@@ -15,6 +15,11 @@ public class MainFrame extends JFrame {
     public void init() {
         //Лучше заиметь 2 панели одну под вывод другую под кнопки
         Panel panel = new Panel();
+        try {
+            panel.paintAlgs();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         this.setContentPane(panel);
 
@@ -22,6 +27,12 @@ public class MainFrame extends JFrame {
         this.setLocationRelativeTo(null);
         this.setSize(1200, 600);
         this.setVisible(true);
+
+        Thread mainTh = new Thread();
+             mainTh.start();
+
+        ///он должен имметь ссілки на панели
+        // и постоянно перерисовівать с периодисчностью 60 млс.
 
 
 

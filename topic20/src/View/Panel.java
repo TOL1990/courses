@@ -65,6 +65,34 @@ Panel()
                 quickField.setText(controller.getQuickArrStr());
             }
         });
+        btnStart.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                controller.start();
+            }
+        });
+        btnPause.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                controller.pause();
+            }
+        });
 
+    }
+    @Override
+    public void paint(Graphics g) {
+        super.paint(g);
+        bubleField.setText(controller.getAlgorithms().get(1).outPrintStr());//1- buble alg
+        quickField.setText(controller.getAlgorithms().get(2).outPrintStr());//2- quick alg
+
+    }
+    public void paintAlgs() throws InterruptedException {
+        new Timer(100, new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                repaint();
+            }
+        }).start();
     }
 }

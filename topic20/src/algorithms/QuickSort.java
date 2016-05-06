@@ -57,7 +57,13 @@ public class QuickSort extends AbsstractSort{
                 else if (j == cur)
                     cur = i;
             }
-            print();
+            System.out.println("quick");
+            print(); // print to console
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
         doSort(start, cur);
         doSort(cur+1, end);

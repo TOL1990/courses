@@ -1,8 +1,11 @@
 package SorterApp;
 
+import algorithms.AbsstractSort;
 import algorithms.BubleSort;
 import algorithms.QuickSort;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -10,8 +13,11 @@ import java.util.Random;
  */
 public class Controller {
     private int[] unsortedArr;
+    private List<AbsstractSort> algorithms;
     private BubleSort bubleSort;
     private QuickSort quickSort;
+
+    public static Boolean waitFlag;
 
     private final int ARRAY_LENGTH = 100;
 
@@ -20,26 +26,45 @@ public class Controller {
     }
 
     private void init() {
+        waitFlag = false;
         unsortedArr = CreateAndMix();
-         bubleSort = new BubleSort(unsortedArr);
-         quickSort = new QuickSort(unsortedArr);
+        algorithms = new ArrayList<>();
+        algorithms.add(new BubleSort(unsortedArr));
+        algorithms.add(new QuickSort(unsortedArr));
     }
-
-    private int[] arr;
 
     public void generateArr() {
         unsortedArr = CreateAndMix();
-        bubleSort = new BubleSort(unsortedArr);
-        quickSort = new QuickSort(unsortedArr);
+        algorithms.add(new BubleSort(unsortedArr));
+        algorithms.add(new QuickSort(unsortedArr));
+//        bubleSort = new BubleSort(unsortedArr);
+//        quickSort = new QuickSort(unsortedArr);
     }
 
     public void start() {
+        if(waitFlag == false) {
+            Thread bubleTread = new Thread(algorithms.get(1));// 1       bubleSort
+            Thread quickTread = new Thread(algorithms.get(2));// 2      quickSort
+            bubleTread.start();
+//            quickTread.start();
+        }
 
+        //if run
+        synchronized (Flag.wait) {
+            Flag.wait.notifyAll();
+            waitFlag = false;
+        }
 
-//        Thread bubleTread = new Thread(new BubleSort());
     }
 
     public void pause() {
+        try {
+            Flag.wait.wait();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        waitFlag = true;
+
     }
 
     public void clear() {
@@ -63,17 +88,30 @@ public class Controller {
 
 
     public int[] getBubleArr() {
-        return bubleSort.outPrintIntArr();
+        return algorithms.get(1).outPrintIntArr(); //1 - Bublesort
+//     return bubleSort.outPrintIntArr();
     }
+
     public String getBubleArrStr() {
-      return bubleSort.outPrintStr();
+        return algorithms.get(1).outPrintStr(); //1 - Bublesort
+//        return bubleSort.outPrintStr();
     }
 
     public int[] getQuickArr() {
-        return quickSort.outPrintIntArr();
-    }
-    public String getQuickArrStr() {
-        return quickSort.outPrintStr();
+        return algorithms.get(2).outPrintIntArr(); //2 - Quicksort
+//        return quickSort.outPrintIntArr();
     }
 
+    public String getQuickArrStr() {
+        return algorithms.get(2).outPrintStr(); //2 - Quicksort
+//        return quickSort.outPrintStr();
+    }
+
+    public List<AbsstractSort> getAlgorithms() {
+        return algorithms;
+    }
+
+    public void setAlgorithms(List<AbsstractSort> algorithms) {
+        this.algorithms = algorithms;
+    }
 }
