@@ -1,0 +1,10 @@
+<hibernate-mapping xmlns="http://www.hibernate.org/xsd/hibernate-mapping">
+    <class name="java.entity.Owner" table="owners">
+        <id column="owner_id" name="id" type="java.lang.Long">
+            <generator class="increment"/>
+        </id>
+        <property column="firstname" name="firstname" type="java.lang.String"/>
+        <property column="lastname" name="lastname" type="java.lang.String"/>
+        <property column="mobilenumber" name="tel" type="java.lang.String"/>
+    </class>
+</hibernate-mapping>
