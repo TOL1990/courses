@@ -1,10 +1,15 @@
-<hibernate-mapping xmlns="http://www.hibernate.org/xsd/hibernate-mapping">
-    <class name="java.entity.Owner" table="owners">
-        <id column="owner_id" name="id" type="java.lang.Long">
-        <generator class="increment"/>
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+        <!--xmlns="http://www.hibernate.org/xsd/hibernate-mapping"-->
+<hibernate-mapping >
+    <class name="entity.Owner" table="owners"  lazy="false"> <!--catalog="CarMarketDB"-->
+        <id column="owner_id" name="owner_id" type="java.lang.Long">
+        <generator class="native"/>
         </id>
-        <property column="firstname" name="firstname" type="java.lang.String"/>
-        <property column="lastname" name="lastname" type="java.lang.String"/>
-        <property column="mobilenumber" name="tel" type="java.lang.String"/>
+        <property column="firstname" name="firstName" type="string"/>
+        <property column="lastname" name="lastName" type="string"/>
+        <property column="mobilenumber" name="tel" type="string"/>
     </class>
 </hibernate-mapping>

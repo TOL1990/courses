@@ -41,6 +41,7 @@
       <module name="topic16" target="1.8" />
       <module name="topic2" target="1.8" />
       <module name="topic21" target="1.8" />
+      <module name="topic221" target="1.5" />
       <module name="topic4" target="1.8" />
       <module name="topic8" target="1.8" />
       <module name="topic9" target="1.8" />

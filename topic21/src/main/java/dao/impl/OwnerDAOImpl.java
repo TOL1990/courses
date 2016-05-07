@@ -10,6 +10,7 @@ import java.util.List;
 
 import org.hibernate.Session;
 import util.HibernateUtil;
+import org.hibernate.cfg.Configuration;
 
 import javax.swing.*;
 

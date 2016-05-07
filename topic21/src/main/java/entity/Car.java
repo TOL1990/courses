@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
  */
 public class Car {
     private Long car_id;
-    private Long owner_id;
+    private Owner owner;
     private String developer;
     private String model;
 
@@ -19,9 +19,9 @@ public class Car {
     public Car() {
     }
 
-    public Car(Long car_id, Long owner_id, String developer, String model, String vin, String describe_more, int created) {
+    public Car(Long car_id, Owner owner, String developer, String model, String vin, String describe_more, int created) {
         this.car_id = car_id;
-        this.owner_id = owner_id;
+        this.owner = owner;
         this.developer = developer;
         this.model = model;
         this.vin = vin;
@@ -37,12 +37,12 @@ public class Car {
         this.car_id = car_id;
     }
 
-    public Long getOwner_id() {
-        return owner_id;
+    public Owner getOwner() {
+        return owner;
     }
 
-    public void setOwner_id(Long owner_id) {
-        this.owner_id = owner_id;
+    public void setOwner(Owner owner) {
+        this.owner = owner;
     }
 
     public String getDeveloper() {
@@ -83,19 +83,6 @@ public class Car {
 
     public void setCreated(int created) {
         this.created = created;
-    }
-
-    @Override
-    public String toString() {
-        return "Car{" +
-                "car_id=" + car_id +
-                ", owner_id=" + owner_id +
-                ", developer='" + developer + '\'' +
-                ", model='" + model + '\'' +
-                ", vin='" + vin + '\'' +
-                ", describe_more='" + describe_more + '\'' +
-                ", created=" + created +
-                '}';
     }
 }
 
