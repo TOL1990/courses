@@ -39,7 +39,7 @@ public class OwnerDAOImpl implements OwnerDAO {
     }
 
     @Override
-    public void updateBus(Long Owner_id, Owner owner) throws SQLException {
+    public void updateOwner (Long Owner_id, Owner owner) throws SQLException {
         Session session = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
@@ -104,5 +104,23 @@ public class OwnerDAOImpl implements OwnerDAO {
                 session.close();
             }
         }
+    }
+
+    @Override
+    public Owner findOwnerByFirstName(String firstName) throws SQLException {
+        Session session = null;
+        Owner owner = null;
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
+            owner = (Owner) session.load(Owner.class, firstName);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Ошибка 'FirstName'", JOptionPane.OK_OPTION);
+        } finally {
+            if (session != null && session.isOpen()) {
+                session.close();
+            }
+        }
+        return owner;
+
     }
 }

@@ -7,13 +7,15 @@
         <property name="connection.url">jdbc:mysql://localhost/carmarketschema</property>
         <property name="connection.username">root</property>
         <property name="connection.password">Jh23q.9</property>
-        <!--<property name="connection.pool_size">1</property>-->
+        <property name="connection.pool_size">1</property>
         <property name="current_session_context_class">thread</property>
         <property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>
         <property name="show_sql">true</property>
-        <!--<property name="hbm2ddl.auto">update</property>-->
+        <property name="hbm2ddl.auto">update</property>
 
         <mapping resource = "Owner.hbm.xml"/>
+        <mapping resource = "Car.hbm.xml"/>
+        <mapping resource = "Lot.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>
 

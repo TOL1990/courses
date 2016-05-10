@@ -2,6 +2,8 @@ package entity;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Set;
+
 /**
  * Created by Leonid on 31.03.2016.
  */
@@ -11,9 +13,14 @@ public class Owner {
     private String lastName;
     @SerializedName("contact_phone")
     private String tel;
+    private Set<Car> cars;
 
     public Owner(){}
-
+    public Owner(String firstName, String lastName, String tel) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.tel = tel;
+    }
     public Owner(Long owner_id, String firstName, String lastName, String tel) {
         this.owner_id = owner_id;
         this.firstName = firstName;
@@ -51,6 +58,14 @@ public class Owner {
 
     public void setTel(String tel) {
         this.tel = tel;
+    }
+
+    public Set<Car> getCars() {
+        return cars;
+    }
+
+    public void setCars(Set<Car> cars) {
+        this.cars = cars;
     }
 
     @Override

@@ -11,8 +11,9 @@ import java.util.Collection;
  */
 public interface OwnerDAO extends Serializable{
     public void addOwner(Owner owner) throws SQLException;
-    public void updateBus(Long Owner_id, Owner owner) throws SQLException;
+    public void updateOwner(Long Owner_id, Owner owner) throws SQLException;
     public Owner getOwnerById(Long Owner_id) throws SQLException;
+    public Owner findOwnerByFirstName(String firstName) throws SQLException;
     public Collection getAllOwners() throws SQLException;
     public void deleteOwner(Owner owner) throws SQLException;
 

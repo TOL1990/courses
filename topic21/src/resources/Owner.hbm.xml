@@ -4,12 +4,19 @@
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
         <!--xmlns="http://www.hibernate.org/xsd/hibernate-mapping"-->
 <hibernate-mapping >
-    <class name="entity.Owner" table="owners"  lazy="false"> <!--catalog="CarMarketDB"-->
+    <class name="entity.Owner" table="owners"  lazy="false">
         <id column="owner_id" name="owner_id" type="java.lang.Long">
-        <generator class="native"/>
+        <generator class="increment"/>
         </id>
         <property column="firstname" name="firstName" type="string"/>
         <property column="lastname" name="lastName" type="string"/>
         <property column="mobilenumber" name="tel" type="string"/>
+
+        <set name="cars" table="owners" lazy="true">
+            <key>
+                <column name="owner_id" not-null="true"/>
+            </key>
+            <one-to-many class="entity.Car"/>
+        </set>
     </class>
 </hibernate-mapping>

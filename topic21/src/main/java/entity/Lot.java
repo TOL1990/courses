@@ -5,15 +5,24 @@ package entity;
  */
 public class Lot {
     private Long lotId;
-    private Long carId;
+    private Car car;
     private int price;
 
     public Lot(){}
 
-    public Lot(Long lotId, Long carId, Long ownerId, int price) {
+    public Lot(Long lotId, Car car, int price) {
         this.lotId = lotId;
-        this.carId = carId;
+        this.car = car;
         this.price = price;
+    }
+
+    @Override
+    public String toString() {
+        return "Lot{" +
+                "lotId=" + lotId +
+                ", car=" + car +
+                ", price=" + price +
+                '}';
     }
 
     public Long getLotId() {
@@ -24,12 +33,12 @@ public class Lot {
         this.lotId = lotId;
     }
 
-    public Long getCarId() {
-        return carId;
+    public Car getCar() {
+        return car;
     }
 
-    public void setCarId(Long carId) {
-        this.carId = carId;
+    public void setCar(Car car) {
+        this.car = car;
     }
 
     public int getPrice() {
@@ -38,14 +47,5 @@ public class Lot {
 
     public void setPrice(int price) {
         this.price = price;
-    }
-
-    @Override
-    public String toString() {
-        return "Lot{" +
-                "lotId=" + lotId +
-                ", carId=" + carId +
-                ", price=" + price +
-                '}';
     }
 }
