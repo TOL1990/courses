@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import util.HibernateUtil;
 import org.hibernate.cfg.Configuration;
@@ -111,10 +112,13 @@ public class OwnerDAOImpl implements OwnerDAO {
         Session session = null;
         Owner owner = null;
         try {
-            session = HibernateUtil.getSessionFactory().openSession();
-            owner = (Owner) session.load(Owner.class, firstName);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e.getMessage(), "Ошибка 'FirstName'", JOptionPane.OK_OPTION);
+            session = HibernateUtil.getSessionFactory().getCurrentSession();
+            session.beginTransaction();
+            String frstN = firstName;
+            Query query = session.createQuery("from Owner where firstname = :firstN").setString("firstN", frstN);
+            owner = (Owner) query;
+            session.getTransaction().commit();
+
         } finally {
             if (session != null && session.isOpen()) {
                 session.close();

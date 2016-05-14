@@ -19,6 +19,15 @@ public class Car {
     public Car() {
     }
 
+    public Car(Owner owner, String developer, String model, String vin, String describe_more, int created) {
+        this.owner = owner;
+        this.developer = developer;
+        this.model = model;
+        this.vin = vin;
+        this.describe_more = describe_more;
+        this.created = created;
+    }
+
     public Car(Long car_id, Owner owner, String developer, String model, String vin, String describe_more, int created) {
         this.car_id = car_id;
         this.owner = owner;

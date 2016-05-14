@@ -52,7 +52,19 @@ public class CarDAOImpl implements CarDAO {
 
     @Override
     public void deleteCar(Car car) throws SQLException {
-
+        Session session = null;
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+            session.delete(car);
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Ошибка при удалении", JOptionPane.OK_OPTION);
+        } finally {
+            if (session != null && session.isOpen()) {
+                session.close();
+            }
+        }
     }
 
     @Override
@@ -77,10 +89,11 @@ public class CarDAOImpl implements CarDAO {
             session = HibernateUtil.getSessionFactory().getCurrentSession();
             session.beginTransaction();
             Long ownerId = owner.getOwner_id();
-            Query query = session.createQuery("from Car as car where owner_id =:ownerId").setLong("ownerId", ownerId);
+            Query query = session.createQuery("from Car as car where owner.id =:ownerId").setLong("ownerId", ownerId);
 //            Query query = session.createQuery("from Car where owner = :ownerparam");
 //            query.setParameter("ownerparam", owner);
             cars = (List<Car>) query.list();
+            System.out.println(cars);
             session.getTransaction().commit();
 
         } finally {

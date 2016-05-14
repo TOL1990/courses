@@ -20,11 +20,9 @@ public class Main {
         Collection owners = Factory.getInstance().getOwnerDAO().getAllOwners();
         Iterator iterator = owners.iterator();
         System.out.println("========Все Владельцы=========");
-        while (iterator.hasNext())
-        {
+        while (iterator.hasNext()) {
             Owner owner = (Owner) iterator.next();
-            if(owner.getFirstName().equals("Barak"))
-            {
+            if (owner.getFirstName().equals("Barak")) {
 //                System.out.println("Нашелся дурачек");
                 master = owner;
 //                System.out.println("Владелец : " + master.getFirstName() + " " + master.getLastName() + "  Номер mobile : " + master.getTel());
@@ -32,24 +30,20 @@ public class Main {
             }
             System.out.println("Владелец : " + owner.getFirstName() + " " + owner.getLastName() + "  Номер mobile : " + owner.getTel());
         }
-
+//        Owner barak = Factory.getInstance().getOwnerDAO().findOwnerByFirstName("Barak");
+//        System.out.println("durachek"+" " + barak.getLastName());
 
 
         Collection cars = Factory.getInstance().getCarDAO().getCarsByOwner(master);
         Iterator iterator1 = cars.iterator();
-        System.out.println("========Все Владельцы=========");
-        while (iterator.hasNext())
-        {
-            Car car = (Car) iterator.next();
-            System.out.println(car.toString());
+        System.out.println("========Все машинки владельцев=========");
+        while (iterator1.hasNext()) {
+            Car car = (Car) iterator1.next();
+            System.out.println(car.getDeveloper());
         }
 
 
-
-
     }
-
-
 
 
 }

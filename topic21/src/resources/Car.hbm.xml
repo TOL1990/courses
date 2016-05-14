@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="entity.Car" table="cars" lazy="false">
+        <id name="car_id" column="car_id" type="java.lang.Long">
+            <generator class="native"/>
+        </id>
+        <property name="developer" column="developer" type="java.lang.String"/>
+        <property name="model" column="model" type="java.lang.String"/>
+        <property name="vin" column="vin" type="java.lang.String"/>
+        <property name="describe_more" column="describe_more" type="java.lang.String"/>
+        <property name="created" column="created" type="java.lang.Integer"/>
+
+        <many-to-one name="owner" class="entity.Owner">
+            <column name="owner_id" not-null="true"/>
+        </many-to-one>
+
+    </class>
+</hibernate-mapping>
