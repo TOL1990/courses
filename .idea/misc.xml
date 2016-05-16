@@ -3,19 +3,27 @@
   <component name="EntryPointsManager">
     <entry_points version="2.0" />
   </component>
-  <component name="FrameworkDetectionExcludesConfiguration">
-    <file type="web" url="file://$PROJECT_DIR$/topic14" />
-  </component>
-  <component name="IdProvider" IDEtalkID="0BEECE79D357328EF6274D20F2C7869D" />
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/topic2/pom.xml" />
+        <option value="$PROJECT_DIR$/topic4/pom.xml" />
         <option value="$PROJECT_DIR$/topic7/pom.xml" />
+        <option value="$PROJECT_DIR$/topic8/pom.xml" />
+        <option value="$PROJECT_DIR$/topic9/pom.xml" />
+        <option value="$PROJECT_DIR$/topic10/pom.xml" />
+        <option value="$PROJECT_DIR$/topic12/pom.xml" />
         <option value="$PROJECT_DIR$/topic14/pom.xml" />
-        <option value="$PROJECT_DIR$/topic21/pom.xml" />
-        <option value="$PROJECT_DIR$/topic22/pom.xml" />
+        <option value="$PROJECT_DIR$/topic16/pom.xml" />
+        <option value="$PROJECT_DIR$/topic23/pom.xml" />
       </list>
+    </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/topic23/native-annotations/pom.xml" />
+        <option value="$PROJECT_DIR$/topic23/native-xml/pom.xml" />
+      </set>
     </option>
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
@@ -28,7 +36,7 @@
     <ConfirmationsSetting value="0" id="Add" />
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" assert-keyword="true" jdk-15="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="false" assert-keyword="true" jdk-15="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
 </project>

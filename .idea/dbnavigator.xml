@@ -23,7 +23,11 @@
     <autoscroll-to-editor value="false" />
     <autoscroll-from-editor value="true" />
     <show-object-properties value="true" />
-    <loaded-nodes />
+    <loaded-nodes>
+      <connection connection-id="82c35388-f55c-4037-9da6-d3d8f19a365b">
+        <schema name="bankdb" object-types="column, constraint, function, index, procedure, table, dataset trigger, view" />
+      </connection>
+    </loaded-nodes>
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="82c35388-f55c-4037-9da6-d3d8f19a365b">
@@ -32,6 +36,7 @@
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
     <filter-list connection-id="82c35388-f55c-4037-9da6-d3d8f19a365b" dataset="carmarketschema.owners" active-filter-id="" />
+    <filter-list connection-id="82c35388-f55c-4037-9da6-d3d8f19a365b" dataset="bankdb.bills" active-filter-id="" />
   </component>
   <component name="DBNavigator.Project.EditorStateManager">
     <last-used-providers />
