@@ -14,7 +14,8 @@ import java.util.List;
 public class ClientDaoImpl implements ClientDAO {
     private EntityManager entityManager;
 
-    public ClientDaoImpl(EntityManager entityManager) { this.entityManager = entityManager;
+    public ClientDaoImpl(EntityManager entityManager) {
+        this.entityManager = entityManager;
     }
 
     public Client findByInn(Long inn) {
@@ -23,8 +24,6 @@ public class ClientDaoImpl implements ClientDAO {
         Client foundClient = entityManager.find(Client.class, inn);
 
         entityManager.getTransaction().commit();
-        entityManager.close();
-
         return foundClient;
     }
 
@@ -62,8 +61,8 @@ public class ClientDaoImpl implements ClientDAO {
         entityManager.getTransaction().commit();
 
     }
-    public void delete(Client client)
-    {
+
+    public void delete(Client client) {
         entityManager.getTransaction().begin();
         entityManager.remove(client);
         entityManager.getTransaction().commit();

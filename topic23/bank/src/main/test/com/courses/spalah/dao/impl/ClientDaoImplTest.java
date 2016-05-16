@@ -3,10 +3,9 @@ package com.courses.spalah.dao.impl;
 import com.courses.spalah.model.Client;
 import com.courses.spalah.service.ClientService;
 import org.hibernate.mapping.List;
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -19,6 +18,7 @@ import static org.junit.Assert.*;
 /**
  * Created by Leonid on 15.05.2016.
  */
+@RunWith(JUnit4.class)
 public class ClientDaoImplTest extends Assert {
 
 
@@ -36,13 +36,20 @@ public class ClientDaoImplTest extends Assert {
          entityManager = initEntityManager();
 
     }
-
-    @org.junit.Test
+    @Test
+    public void mainTest()throws Exception
+    {
+        Client client = new Client(INN,FIRST_NAME,LAST_NAME);
+        save();
+        findByInn();
+        updateClient();
+        delete();
+    }
     public void save() throws Exception {
         ClientDaoImpl clientDao= new ClientDaoImpl(entityManager);
-        ArrayList atStartClients = (ArrayList) clientDao.getAllClient();
+        ArrayList allClients = (ArrayList) clientDao.getAllClient();
 
-        int startSize = atStartClients.size();
+        int startSize = allClients.size();
 
         Client client = new Client();
         client.setFirstName(FIRST_NAME);
@@ -50,48 +57,57 @@ public class ClientDaoImplTest extends Assert {
         client.setInn(INN);
 
         clientDao.save(client);
-
-        assertEquals(startSize + 1, startSize);
+        allClients = (ArrayList) clientDao.getAllClient();
+        assertEquals(startSize + 1, allClients.size());
+//        delete();
     }
-    @org.junit.Test
     public void findByInn() throws Exception {
         ClientDaoImpl clientDao = new ClientDaoImpl(entityManager);
-        Client client = clientDao.findByInn(1000000000L);
+        Client client = clientDao.findByInn(INN);
         assertEquals(FIRST_NAME, client.getFirstName());
         assertEquals(LAST_NAME, client.getLastName());
 
     }
 
 
-    @Test
-    public void delete() throws Exception {
 
+    public void delete() throws Exception {
+//        init();
         ClientDaoImpl clientDao= new ClientDaoImpl(entityManager);
-        Client client = clientDao.findByInn(1000000000L);
+        Client client = clientDao.findByInn(INN);
 
         ArrayList atStartClients = (ArrayList) clientDao.getAllClient();
         int startSize = atStartClients.size();
         clientDao.delete(client);
-        assertEquals(startSize - 1, startSize);
+        atStartClients = (ArrayList) clientDao.getAllClient();
+
+        assertEquals(startSize - 1, atStartClients.size());
+//        close();
     }
 
-    @org.junit.Test
     public void getAllClient() throws Exception {
 
     }
 
-    @org.junit.Test
     public void getAllBills() throws Exception {
 
     }
 
-    @org.junit.Test
     public void countClients() throws Exception {
 
     }
 
-    @org.junit.Test
     public void updateClient() throws Exception {
+        ClientDaoImpl clientDao= new ClientDaoImpl(entityManager);
+        Client client = clientDao.findByInn(INN);
+        client.setFirstName("Pan");
+        client.setLastName("Banan");
+        clientDao.updateClient(client.getInn(), client);
+
+        client = clientDao.findByInn(INN);
+        assertEquals("Pan",client.getFirstName());
+        assertEquals("Banan",client.getLastName());
+
 
     }
     private static EntityManager initEntityManager() {
