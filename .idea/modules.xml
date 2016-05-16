@@ -2,6 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/topic23/BankAplication.iml" filepath="$PROJECT_DIR$/topic23/BankAplication.iml" />
+      <module fileurl="file://$PROJECT_DIR$/topic23/bank/bank.iml" filepath="$PROJECT_DIR$/topic23/bank/bank.iml" />
+      <module fileurl="file://$PROJECT_DIR$/topic23/bankApp.iml" filepath="$PROJECT_DIR$/topic23/bankApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/topic23/jpa/jpa.iml" filepath="$PROJECT_DIR$/topic23/jpa/jpa.iml" />
       <module fileurl="file://$PROJECT_DIR$/test/test.iml" filepath="$PROJECT_DIR$/test/test.iml" />
       <module fileurl="file://$PROJECT_DIR$/topic1/topic1.iml" filepath="$PROJECT_DIR$/topic1/topic1.iml" />

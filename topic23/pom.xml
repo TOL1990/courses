@@ -10,9 +10,10 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>native-xml</module>
-        <module>native-annotations</module>
+        <!--<module>native-xml</module>-->
+        <!--<module>native-annotations</module>-->
         <module>jpa</module>
+        <module>bank</module>
     </modules>
 
     <dependencies>

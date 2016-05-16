@@ -3,20 +3,21 @@
              xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
              version="2.0">
     <!--Уникальное имя для нашего persistence unita-->
-    <persistence-unit name="com.courses.spalah.jpa">
+    <persistence-unit name="com.courses.spalah.bank">
         <!--Указываем JPA провайдар. Hibernate в нашем случае-->
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
         <!--Наши ентити-классы-->
-        <class>com.courses.spalah.domain.Book</class>
-        <class>com.courses.spalah.domain.BookShelf</class>
+        <class>com.courses.spalah.model.Client</class>
+        <class>com.courses.spalah.model.Bill</class>
+        <class>com.courses.spalah.model.Transaction</class>
 
         <!--Проперки, которые используются провайдером.-->
         <!--В данном случае указываем Hibernate коннекшн к базе-->
         <properties>
-            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/hibernate"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/bankdb"/>
             <property name="javax.persistence.jdbc.user" value="root"/>
-            <property name="javax.persistence.jdbc.password" value="root"/>
+            <property name="javax.persistence.jdbc.password" value="Jh23q.9"/>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
         </properties>
     </persistence-unit>
