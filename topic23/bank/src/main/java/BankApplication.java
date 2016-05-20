@@ -16,9 +16,7 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
-/**
- * Created by Leonid on 14.05.2016.
- */
+
 public class BankApplication {
     private static final String PERSISTENCE_UNIT = "com.courses.spalah.bank";
     protected static EntityManager entityManager;
@@ -42,28 +40,28 @@ public class BankApplication {
     }
 
 
-    private static Client addClient(Client clientouter) {
+    public static Client addClient(String firstName, String lastName, String inn) {
 
         entityManager = initEntityManager();
         ClientDaoImpl clientDao = new ClientDaoImpl(entityManager);
         Client client = new Client();
-        client.setFirstName("Jorik");
-        client.setLastName("Vartanov");
-        client.setInn(1236547895L);
+        client.setFirstName(firstName);
+        client.setLastName(lastName);
+        client.setInn(Long.parseLong(inn));
 
-//        clientDao.save(clientouter); // TODO: 15.05.2016  пихнуть когда будет UI
+
         clientDao.save(client);
         entityManager.close();
         return client;
     }
-    private static Client findClient(Long inn)
+    public static Client findClient(Long inn)
     {
         entityManager = initEntityManager();
         ClientDaoImpl clientDao = new ClientDaoImpl(entityManager);
         Client client = clientDao.findByInn(inn);
         return client;
     }
-    private static void addBill(Client client, BigDecimal ballance) {
+    public static void addBill(Client client, BigDecimal ballance) {
         entityManager = initEntityManager();
         BillDaoImpl billDao = new BillDaoImpl(entityManager);
 
@@ -96,7 +94,7 @@ public class BankApplication {
     }
 
     //Если бабки пойдут в другой банк
-    private static void makeTransaction(Bill bill, BigDecimal summ) {
+    public static void makeTransaction(Bill bill, BigDecimal summ) {
         entityManager = initEntityManager();
         TransactionDaoImpl trDAO = new TransactionDaoImpl(entityManager);
         Transaction transaction = new Transaction();
@@ -108,7 +106,7 @@ public class BankApplication {
 
     }
 
-    private static void makeTransaction(Bill sender, Bill recipient, BigDecimal summ) {
+    public static void makeTransaction(Bill sender, Bill recipient, BigDecimal summ) {
         entityManager = initEntityManager();
         if (isTransactionValid(sender, recipient, summ)) {
             //попробовать сделать единой транзакцией
