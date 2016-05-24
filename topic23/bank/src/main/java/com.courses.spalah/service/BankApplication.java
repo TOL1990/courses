@@ -1,3 +1,5 @@
+package com.courses.spalah.service;
+
 import com.courses.spalah.dao.TransactionDAO;
 import com.courses.spalah.dao.impl.BillDaoImpl;
 import com.courses.spalah.dao.impl.ClientDaoImpl;
@@ -5,7 +7,6 @@ import com.courses.spalah.dao.impl.TransactionDaoImpl;
 import com.courses.spalah.model.Bill;
 import com.courses.spalah.model.Client;
 import com.courses.spalah.model.Transaction;
-import com.courses.spalah.service.ClientService;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -42,7 +43,7 @@ public class BankApplication {
 
     public static Client addClient(String firstName, String lastName, String inn) {
 
-        entityManager = initEntityManager();
+        checkEntity();
         ClientDaoImpl clientDao = new ClientDaoImpl(entityManager);
         Client client = new Client();
         client.setFirstName(firstName);
@@ -52,17 +53,18 @@ public class BankApplication {
 
         clientDao.save(client);
         entityManager.close();
+        System.out.println(client.toString()+" Успешно добавлен");
         return client;
     }
     public static Client findClient(Long inn)
     {
-        entityManager = initEntityManager();
+        checkEntity();
         ClientDaoImpl clientDao = new ClientDaoImpl(entityManager);
         Client client = clientDao.findByInn(inn);
         return client;
     }
     public static void addBill(Client client, BigDecimal ballance) {
-        entityManager = initEntityManager();
+        checkEntity();
         BillDaoImpl billDao = new BillDaoImpl(entityManager);
 
         Bill bill = new Bill();
@@ -73,7 +75,7 @@ public class BankApplication {
     }
 
     public static List<Bill> getAllBill(Client client) {
-        entityManager = initEntityManager();
+        checkEntity();
         BillDaoImpl billDao = new BillDaoImpl(entityManager);
         Collection<Bill> list = billDao.getBillsByClient(client);
 
@@ -82,7 +84,7 @@ public class BankApplication {
     }
 
     public static List<Client> getAllClients() {
-        entityManager = initEntityManager();
+        checkEntity();
         ClientDaoImpl clientDao = new ClientDaoImpl(entityManager);
 
         List<Client> allClients = clientDao.getAllClient();
@@ -95,7 +97,7 @@ public class BankApplication {
 
     //Если бабки пойдут в другой банк
     public static void makeTransaction(Bill bill, BigDecimal summ) {
-        entityManager = initEntityManager();
+        checkEntity();
         TransactionDaoImpl trDAO = new TransactionDaoImpl(entityManager);
         Transaction transaction = new Transaction();
         transaction.setBill(bill);
@@ -107,7 +109,7 @@ public class BankApplication {
     }
 
     public static void makeTransaction(Bill sender, Bill recipient, BigDecimal summ) {
-        entityManager = initEntityManager();
+        checkEntity();
         if (isTransactionValid(sender, recipient, summ)) {
             //попробовать сделать единой транзакцией
 
@@ -124,7 +126,7 @@ public class BankApplication {
     }
 
     public static List<Transaction> getAllTrasactions() {
-        entityManager = initEntityManager();
+        checkEntity();
         TransactionDaoImpl transactionDao = new TransactionDaoImpl(entityManager);
         List<Transaction> transactionList = transactionDao.getAllTransactions();
         entityManager.close();
@@ -136,7 +138,7 @@ public class BankApplication {
     }
 
     public static List<Transaction> getAllTrasactions(Client client) {
-        entityManager = initEntityManager();
+        checkEntity();
         List<Bill> bills = getAllBill(client);
         List<Transaction> transactions = new ArrayList<Transaction>();
 
@@ -153,7 +155,7 @@ public class BankApplication {
     }
 
     public static List<Transaction> getAllTrasactions(Bill bill) {
-        entityManager = initEntityManager();
+        checkEntity();
         TransactionDAO transactionDAO = new TransactionDaoImpl(entityManager);
         Collection<Transaction> list = transactionDAO.getTransactionsByBill(bill);
 
@@ -162,7 +164,7 @@ public class BankApplication {
     }
 
     public static Bill getBillByNumber(Long number) {
-        entityManager = initEntityManager();
+        checkEntity();
         BillDaoImpl billDAO = new BillDaoImpl(entityManager);
         Bill bill = billDAO.findByNumber(number);
         if (entityManager.isOpen()) entityManager.close();
@@ -179,7 +181,15 @@ public class BankApplication {
 
 
     private static EntityManager initEntityManager() {
+        //Хранить в класе гдето  ипроверять на нулл и если не нулл возвор
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT);
         return entityManagerFactory.createEntityManager();
     }
+    private static void checkEntity()
+    {
+        if(entityManager == null || !entityManager.isOpen())
+            entityManager = initEntityManager();
+
+    }
 }
+

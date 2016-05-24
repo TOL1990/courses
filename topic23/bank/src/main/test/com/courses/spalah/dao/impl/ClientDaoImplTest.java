@@ -1,8 +1,6 @@
 package com.courses.spalah.dao.impl;
 
 import com.courses.spalah.model.Client;
-import com.courses.spalah.service.ClientService;
-import org.hibernate.mapping.List;
 import org.junit.*;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
@@ -12,8 +10,6 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import java.util.ArrayList;
-
-import static org.junit.Assert.*;
 
 /**
  * Created by Leonid on 15.05.2016.
