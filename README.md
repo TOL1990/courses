@@ -248,3 +248,8 @@
   + Lose Coupling
   + High Cohesion
   + Dependency Injection
+
+25\. Spring MVC
+
+[ДЗ #26](https://github.com/rxn1d/courses/blob/master/topic26/topic26_home_work.md)
+* Создаем REST приложение на основе Spring MVC
