@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="bankApp" class="com.courses.spalah.service.BankApplication">
+        <property name="clientDao" ref="clientDao"/>
+        <property name="billDao" ref="billDao"/>
+        <property name="transactionDao" ref="transactionDao"/>
+    </bean>
+
+    <bean id="clientDao" class="com.courses.spalah.dao.impl.ClientDaoImpl">
+        <constructor-arg ref="entityManager"/>
+    </bean>
+    <bean id="billDao" class="com.courses.spalah.dao.impl.BillDaoImpl">
+        <constructor-arg ref="entityManager"/>
+    </bean>
+    <bean id="transactionDao" class="com.courses.spalah.dao.impl.TransactionDaoImpl">
+        <constructor-arg ref="entityManager"/>
+    </bean>
+    <bean id="entityManager" class="com.courses.spalah.service.BankApplication" factory-method="initEntityManager"/>
+
+
+</beans>
