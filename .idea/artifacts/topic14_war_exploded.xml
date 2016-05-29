@@ -15,12 +15,14 @@
           <element id="library" level="project" name="Maven: taglibs:standard:1.1.2" />
           <element id="library" level="project" name="Maven: com.google.code.gson:gson:2.3.1" />
           <element id="library" level="project" name="Maven: com.googlecode.json-simple:json-simple:1.1.1" />
-          <element id="library" level="project" name="Maven: topic12:topic12:1.0-SNAPSHOT" />
+          <element id="archive" name="topic12-1.0-SNAPSHOT.jar">
+            <element id="module-output" name="topic12" />
+          </element>
           <element id="library" level="project" name="Maven: org.mortbay.jetty:jetty-util:6.1.25" />
         </element>
       </element>
       <element id="directory" name="META-INF">
-        <element id="file-copy" path="C:\Programing\Java\SpalahSchool\courses\topic14\target/MANIFEST.MF" />
+        <element id="file-copy" path="H:\Programing\Study Java\SpalahCourses\courses\topic14\target/MANIFEST.MF" />
       </element>
       <element id="javaee-facet-resources" facet="topic14/web/Web" />
     </root>

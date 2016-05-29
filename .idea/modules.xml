@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/topic23/bank/bankApp.iml" filepath="$PROJECT_DIR$/topic23/bank/bankApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/topic25/dependency-example/dependency-example.iml" filepath="$PROJECT_DIR$/topic25/dependency-example/dependency-example.iml" />
       <module fileurl="file://$PROJECT_DIR$/topic23/jpa/jpa.iml" filepath="$PROJECT_DIR$/topic23/jpa/jpa.iml" />
+      <module fileurl="file://$PROJECT_DIR$/topic26/rest-service/rest-service.iml" filepath="$PROJECT_DIR$/topic26/rest-service/rest-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/topic25/spring-ioc/spring-ioc.iml" filepath="$PROJECT_DIR$/topic25/spring-ioc/spring-ioc.iml" />
       <module fileurl="file://$PROJECT_DIR$/test/test.iml" filepath="$PROJECT_DIR$/test/test.iml" />
       <module fileurl="file://$PROJECT_DIR$/topic1/topic1.iml" filepath="$PROJECT_DIR$/topic1/topic1.iml" />
